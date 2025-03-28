@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca3ije1w6f3w4"]
+
+[ext_resource type="Script" uid="uid://d2xsmg6ophlfy" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cnksqqg442m45" path="res://Assets/bg.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bvm8gjqc647vt" path="res://bird.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://chhaxhy0xn1u1" path="res://ground.tscn" id="4_1bvp3"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_h2yge")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_ig7tw")
+offset = Vector2(432, 384)
+
+[node name="bird" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="ground" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-2, 116)
+
+[connection signal="hit" from="ground" to="." method="_on_ground_hit"]
